@@ -1,11 +1,4 @@
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [key: string]: any
-    }
-  }
-}
-
+import type {} from "./jsx.d.ts";
 type Node = Element | string;
 interface Element {
   tag: string;
