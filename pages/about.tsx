@@ -1,5 +1,5 @@
-import { h, Component } from "../lib.ts";
-import { Header, Content, Footer, Container } from "../components/layout.tsx";
+import { Component, h } from "../lib.ts";
+import { Container, Content, Footer, Header } from "../components/layout.tsx";
 
 export const About: Component = () => {
   return (
@@ -11,4 +11,4 @@ export const About: Component = () => {
       <Footer />
     </Container>
   );
-}
+};

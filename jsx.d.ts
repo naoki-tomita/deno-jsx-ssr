@@ -13,7 +13,12 @@ declare global {
       li: HTMLElement;
       html: HTMLElement & { lang: string };
       head: HTMLElement;
-      meta: HTMLElement & { content?: string; "http-equiv"?: string; name?: string; charset?: string; };
+      meta: HTMLElement & {
+        content?: string;
+        "http-equiv"?: string;
+        name?: string;
+        charset?: string;
+      };
       title: HTMLElement;
       body: HTMLElement;
       header: HTMLElement;

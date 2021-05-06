@@ -4,8 +4,7 @@ import { About } from "./pages/about.tsx";
 import { A } from "./pages/articles/a.tsx";
 import { B } from "./pages/articles/b.tsx";
 import { C } from "./pages/articles/c.tsx";
-
-import { renderAsString, h } from "./lib.ts";
+import { h, renderAsString } from "./lib.ts";
 import { Container, Content, Footer, Header } from "./components/layout.tsx";
 
 const server = serve({ port: 8000 });
@@ -27,24 +26,25 @@ const NotFound = () => {
       <Footer />
     </Container>
   );
-}
+};
 
 for await (const req of server) {
-  const { Component } = router.find(({ url }) => req.url === url) ?? { Component: NotFound }
+  const { Component } = router.find(({ url }) => req.url === url) ??
+    { Component: NotFound };
   const body = renderAsString(
     <html lang="en">
-    <head>
-      <meta charset="UTF-8"/>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Document</title>
-    </head>
-    <body>
-      <Component />
-    </body>
-    </html>
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <Component />
+      </body>
+    </html>,
   );
   const headers = new Headers();
   headers.append("content-type", "text/html");
-  await req.respond({ status: 200, headers, body })
+  await req.respond({ status: 200, headers, body });
 }
