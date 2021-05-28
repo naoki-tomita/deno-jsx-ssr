@@ -7,11 +7,11 @@ import { h, renderAsString } from "./lib.ts";
 import { Container, Content, Footer, Header } from "./components/layout.tsx";
 
 const router = [
-  { url: "/", Component: Index },
-  { url: "/about", Component: About },
-  { url: "/articles/a", Component: A },
-  { url: "/articles/b", Component: B },
-  { url: "/articles/c", Component: C },
+  { path: "/", Component: Index },
+  { path: "/about", Component: About },
+  { path: "/articles/a", Component: A },
+  { path: "/articles/b", Component: B },
+  { path: "/articles/c", Component: C },
 ];
 
 const NotFound = () => {
@@ -28,7 +28,8 @@ const NotFound = () => {
 
 addEventListener("fetch", async (event) => {
   console.log(event.request);
-  const { Component } = router.find(({ url }) => event.request.url === url) ??
+  const url = new URL(event.request.url);
+  const { Component } = router.find(({ path }) => url.pathname === path) ??
     { Component: NotFound };
   const body = renderAsString(
     <html lang="en">
