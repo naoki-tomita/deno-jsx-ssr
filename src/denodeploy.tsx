@@ -1,4 +1,3 @@
-import { serve } from "./deps.ts";
 import { Index } from "./pages/index.tsx";
 import { About } from "./pages/about.tsx";
 import { A } from "./pages/articles/a.tsx";
@@ -7,7 +6,6 @@ import { C } from "./pages/articles/c.tsx";
 import { h, renderAsString } from "./lib.ts";
 import { Container, Content, Footer, Header } from "./components/layout.tsx";
 
-const server = serve({ port: 8000 });
 const router = [
   { url: "/", Component: Index },
   { url: "/about", Component: About },
