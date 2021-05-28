@@ -27,6 +27,7 @@ const NotFound = () => {
 };
 
 addEventListener("fetch", async (event) => {
+  console.log(event.request);
   const { Component } = router.find(({ url }) => event.request.url === url) ??
     { Component: NotFound };
   const body = renderAsString(
