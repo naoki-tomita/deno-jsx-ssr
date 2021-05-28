@@ -1,4 +1,4 @@
-import { serve } from "./mod.ts";
+import { serve } from "./deps.ts";
 import { Index } from "./pages/index.tsx";
 import { About } from "./pages/about.tsx";
 import { A } from "./pages/articles/a.tsx";
